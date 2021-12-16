@@ -1,0 +1,24 @@
+{
+  "name": "ADVCT",
+  "version": "1.0.0",
+  "description": "Amberflux Data Validation and Correction Tool",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "engines": {
+    "node": "8.11.3"
+  },
+  "devDependencies": {
+    "eslint": "5.0.0",
+    "eslint-config-google": "0.9.1"
+  },
+  "keywords": [
+    "flask",
+    "Dataset Tool"
+  ],
+  "author": "amberflux.com",
+  "contributors": [
+    "Amberflux Support <support@amberflux.com>"
+  ],
+  "license": "MIT"
+}
