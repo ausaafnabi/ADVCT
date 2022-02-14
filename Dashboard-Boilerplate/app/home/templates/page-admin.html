@@ -1,0 +1,139 @@
+{% extends "base-site.html" %}
+
+{% block title %} Profile {% endblock %} 
+
+{% block stylesheets %}
+<!-- Specific Page CSS goes HERE  -->
+<link rel="stylesheet" href="https://cdn.form.io/formiojs/formio.full.min.css">
+<link rel="stylesheet" href="/static/assets/css/jquery.steps.css">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://cdn.form.io/formiojs/formio.full.min.js"></script>
+<style>
+.div {
+  width:100%;
+
+}
+.section {
+    width:100%;
+}
+</style>
+{% endblock stylesheets %}
+
+{% block content %}
+<div style="height: 100%;" class="card card-default mb-0">
+    <div class="row bg-white no-gutters chat" style="height: 100%;">
+      <div id="admin-form-wizard" style="width:100%">
+        <h3>Data Source</h3>
+        <section>
+          <form>
+            <input id="userName" name="userName" type="text" class="required" />
+          </form>
+        </section>
+        <h3>Form Builder</h3>
+        <section>
+          <div id="builder" style="width:100%;padding:15px;"></div>
+        </section>
+      </div>
+    </div>
+</div>
+{% endblock content %}
+
+{% block javascripts %}
+<!-- Specific Page JS goes HERE  -->
+<script src="/static/assets/js/jquery.steps.min.js"></script>
+<script>
+$("#admin-form-wizard").steps({
+  headerTag: 'h3',
+  bodyTag: "section",
+  onFinished : function(){ alert('Done!')}
+});
+
+
+</script>
+<script>
+Formio.builder(document.getElementById('builder'), {}, {
+  builder: {
+    data: false,
+    premium: false,
+    customBasic: {
+      title: 'Basic Components',
+      default: true,
+      weight: 0,
+      components: {
+        textfield: true,
+        textarea: true,
+        email: true,
+        phoneNumber: true
+      }
+    },
+    custom: {
+      title: 'User Fields',
+      weight: 10,
+      components: {
+        firstName: {
+          title: 'First Name',
+          key: 'firstName',
+          icon: 'terminal',
+          schema: {
+            label: 'First Name',
+            type: 'textfield',
+            key: 'firstName',
+            input: true
+          }
+        },
+        lastName: {
+          title: 'Last Name',
+          key: 'lastName',
+          icon: 'terminal',
+          schema: {
+            label: 'Last Name',
+            type: 'textfield',
+            key: 'lastName',
+            input: true
+          }
+        },
+        email: {
+          title: 'Email',
+          key: 'email',
+          icon: 'at',
+          schema: {
+            label: 'Email',
+            type: 'email',
+            key: 'email',
+            input: true
+          }
+        },
+        phoneNumber: {
+          title: 'Mobile Phone',
+          key: 'mobilePhone',
+          icon: 'phone-square',
+          schema: {
+            label: 'Mobile Phone',
+            type: 'phoneNumber',
+            key: 'mobilePhone',
+            input: true
+          }
+        }
+      }
+    },
+    layout: {
+      components: {
+        table: false
+      }
+    }
+  },
+  editForm: {
+    textfield: [
+      {
+        key: 'api',
+        ignore: true
+      }        
+    ]
+  }
+}).then(function(builder) {
+  builder.on('saveComponent', function() {
+    console.log(builder.schema);
+  });
+});
+</script>
+{% endblock javascripts %}
