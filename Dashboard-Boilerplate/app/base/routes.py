@@ -82,6 +82,15 @@ def create_user():
     else:
         return render_template( 'login/register.html', form=create_account_form)
 
+#adding route for admin 
+@blueprint.route('/admin')
+def adminPanel():
+    pass #return render_template('')
+#adding route for app
+@blueprint.route('/app')
+def appPanel():
+    pass
+
 @blueprint.route('/logout')
 def logout():
     logout_user()
