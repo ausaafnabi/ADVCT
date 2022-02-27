@@ -26,7 +26,18 @@
         <h3>Data Source</h3>
         <section>
           <form>
-            <input id="userName" name="userName" type="text" class="required" />
+            <div class="form-group row mb-2">
+            <!--<input id="Dataset" name="userName" type="" class="required" />-->
+                <label for="project">Name of the Project:</label>
+                <input id="project" class="form-control" name="Project" required>
+            </div>
+            <div class="form-group row mb-2" >
+              <label for="dataset">Choose the dataset:</label>
+              <select id="dataset" class="form-control" name="Dataset">
+               <option value="D1">Messidor</option>
+               <option value="D2">Messidor 2</option>
+              </select>
+            </div>
           </form>
         </section>
         <h3>Form Builder</h3>
