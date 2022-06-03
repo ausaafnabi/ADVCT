@@ -82,10 +82,7 @@ def create_user():
     else:
         return render_template( 'login/register.html', form=create_account_form)
 
-#adding route for admin 
-@blueprint.route('/admin')
-def adminPanel():
-    pass #return render_template('')
+#adding route for admin
 #adding route for app
 @blueprint.route('/app')
 def appPanel():

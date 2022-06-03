@@ -19,9 +19,13 @@ def index():
 
     return render_template('index.html')
 
-@blueprint.route('/admin1')
+@blueprint.route('/admin')
 def admin():
     return render_template('page-admin.html')
+
+@blueprint.route('/interface')
+def interface():
+    return render_template('page-chat.html')
     
 @blueprint.route('/<template>')
 @login_required
